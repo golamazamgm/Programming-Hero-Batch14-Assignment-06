@@ -35,7 +35,8 @@ const NavBar = () => {
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm md:px-4 lg:px-8">
+        <div className="shadow-sm shadow-olive-800 w-full">
+            <div className="navbar mx-auto max-w-340 bg-base-100  md:px-4 lg:px-8">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,6 +68,7 @@ const NavBar = () => {
                 <Link className="btn btn-ghost" href="/my-plan">Plan <span className="badge w-6 h-6 p-0 rounded-full badge-warning">0</span></Link>
                 <Link className="btn btn-ghost" href="/my-plan">Saved <span className="badge w-6 h-6 p-0 rounded-full badge-primary">0</span></Link>
             </div>
+        </div>
         </div>
     );
 };

@@ -3,43 +3,44 @@ import Image from 'next/image';
 
 const Hero = () => {
   return (
-    <section className="px-4 md:px-8 lg:px-12 py-6">
-      <div className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-[#121315] px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
-        
-        {/* Left Content */}
-        <div className="flex flex-col items-start max-w-xl z-10">
-          <span className="text-[#C2F800] text-xs font-bold tracking-wider uppercase mb-3">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6  py-6 md:py-2 mt-1.5 md:mt-8 md:mb-16 mb-2.5">
+      <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#121316] border border-white/5 px-6 sm:px-10 md:px-16 py-10 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+
+        {/* Left Column: Text & CTA */}
+        <div className="flex flex-col items-start gap-4 md:gap-6 max-w-xl z-10 flex-1">
+          <span className="text-[#C2F800] text-xs md:text-sm font-bold tracking-widest uppercase">
             WORKOUT LIBRARY
           </span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[1.1] tracking-tight uppercase mb-4">
-            TRAIN WITH INTENT. LOG <br className="hidden sm:inline" /> EVERY SET.
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight uppercase">
+            TRAIN WITH INTENT. <br className="hidden sm:inline" />
+            LOG EVERY SET.
           </h1>
 
-          <p className="text-neutral-400 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+          <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <button className="bg-[#C2F800] hover:bg-[#b0e000] text-black font-extrabold text-xs sm:text-sm tracking-wider uppercase px-6 py-3 rounded-lg transition-colors cursor-pointer shadow-sm">
+          <button className="mt-2 bg-[#C2F800] hover:bg-[#b0e000] text-black font-extrabold text-xs md:text-sm tracking-wider uppercase px-6 py-3.5 rounded-xl transition-all duration-200 active:scale-95 shadow-md">
             BROWSE WORKOUTS
           </button>
         </div>
 
-        {/* Right Image */}
-        <div className="relative flex-shrink-0 w-full max-w-[340px] md:max-w-[420px] lg:max-w-[480px]">
+        {/* Right Column: Hero Graphic */}
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end items-center">
           <Image
             src="/banner.png"
-            alt="Hero Workout Machine"
-            width={520}
-            height={480}
+            alt="Gym machine illustration"
+            width={800}
+            height={800}
             priority
-            className="w-full h-auto object-contain"
+            className="w-[280px] sm:w-[380px] md:w-[400px] lg:w-[430px] xl:w-[460px] h-auto object-contain drop-shadow-2xl"
           />
         </div>
 
       </div>
-    </section>
+    </div>
   );
 };
 
