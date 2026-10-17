@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono , Oswald} from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import NavBar from "./components/navBar";
 
 const oswald = Oswald({
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col ${oswald.className}`}>
-        <NavBar></NavBar>
+        <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
+          <NavBar />
+        </Suspense>
 
 
         {children}
