@@ -3,6 +3,7 @@ import { Geist, Geist_Mono , Oswald} from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import NavBar from "./components/navBar";
+import { MyPlanContextProvider } from "./context/myPlanContext";
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -31,12 +32,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col ${oswald.className}`}>
-        <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
-          <NavBar />
-        </Suspense>
 
-
-        {children}
+        <MyPlanContextProvider Children={
+          <>
+          <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
+            <NavBar />
+          </Suspense>
+          {children}
+          </>
+        } />
+        
         </body>
     </html>
   );
