@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MyPlanContext } from '@/app/context/myPlanContext';
 import { Workout } from '@/app/type';
+import { toast } from "react-toastify";
 
 const MyPlans = () => {
     const context = useContext(MyPlanContext);
@@ -23,8 +24,8 @@ const MyPlans = () => {
 
     // Sort items
     const activeList = [...rawList].sort((a, b) => {
-        if (sortBy === 'duration') return (b.duration || 0) - (a.duration || 0);
-        if (sortBy === 'calories') return (b.caloriesBurned || 0) - (a.caloriesBurned || 0);
+        if (sortBy === 'duration') return (a.duration || 0) - (b.duration || 0);
+        if (sortBy === 'calories') return (a.caloriesBurned || 0) - (b.caloriesBurned || 0);
         if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
         return 0;
     });
@@ -38,8 +39,10 @@ const MyPlans = () => {
     const handleRemove = (id: string | number) => {
         if (activeTab === 'today' && setPlans) {
             setPlans((prev) => prev.filter((item) => String(item.id) !== String(id)));
+            toast.info("Workout removed from today's plan.");
         } else if (activeTab === 'saved' && setLaterPlans) {
             setLaterPlans((prev) => prev.filter((item) => String(item.id) !== String(id)));
+            toast.info("Workout removed from saved plans.");
         }
     };
 
@@ -122,7 +125,7 @@ const MyPlans = () => {
                         <div className="relative">
                             <select
                                 value={sortBy}
-                                onChange={(e) => setSortBy(e.target.value as any)}
+                                onChange={(e) => setSortBy(e.target.value as 'duration' | 'calories' | 'rating')}
                                 aria-label="Sort workouts by"
                                 className="appearance-none bg-[#161820] border border-white/10 hover:border-white/20 text-white text-xs font-medium rounded-xl py-2 pl-3 pr-8 focus:outline-none cursor-pointer"
                             >

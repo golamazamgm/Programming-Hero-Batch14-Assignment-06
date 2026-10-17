@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { MyPlanContext } from "@/app/context/myPlanContext";
 import { Workout } from "@/app/type";
+import { toast } from "react-toastify";
 
 interface SaveLaterBtnProps {
   workout: Workout;
@@ -23,10 +24,12 @@ const SaveLaterBtn = ({ workout }: SaveLaterBtnProps) => {
 
     if (isAlreadySaved) {
       console.log("Workout is already in save for later.");
+      toast.error(`${workout.name} is already saved for later.`);
       return;
     }
 
     setLaterPlans((prev) => [...prev, workout]);
+    toast.success(`${workout.name} added to later plans!`);
     console.log("Workout added to later plans.");
   };
 

@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { MyPlanContext } from "@/app/context/myPlanContext";
 import { Workout } from "@/app/type";
+import { toast } from "react-toastify";
 
 const SaveTodaysPlanBtn = ({ workout }: { workout: Workout }) => {
   const context = useContext(MyPlanContext);
@@ -16,11 +17,13 @@ const SaveTodaysPlanBtn = ({ workout }: { workout: Workout }) => {
     const isAlreadyAdded = plans.some((p) => String(p.id) === String(workout.id));
 
     if (isAlreadyAdded) {
+      toast.error(`${workout.name} is already in today's plans.`);
       console.log("Workout is already in today's plans.");
       return;
     }
 
     setPlans((prevPlans) => [...prevPlans, workout]);
+    toast.success(`${workout.name} added to today's plans!`);
     console.log("Workout added to today's plans.");
   };
 

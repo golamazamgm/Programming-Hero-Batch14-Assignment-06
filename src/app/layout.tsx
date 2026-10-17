@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono , Oswald} from "next/font/google";
+import { Geist, Geist_Mono, Oswald } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import NavBar from "./components/navBar";
 import { MyPlanContextProvider } from "./context/myPlanContext";
+import { ToastContainer } from "react-toastify";
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -34,15 +35,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className={`min-h-full flex flex-col ${oswald.className}`}>
 
         <MyPlanContextProvider>
-  <>
-    <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
-      <NavBar />
-    </Suspense>
-    {children}
-  </>
-</MyPlanContextProvider>
-        
-        </body>
+          <>
+            <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
+              <NavBar />
+            </Suspense>
+            {children}
+          </>
+        </MyPlanContextProvider>
+
+        <ToastContainer />
+
+      </body>
     </html>
   );
 }
