@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import NavBar from "./components/navBar";
 import { MyPlanContextProvider } from "./context/myPlanContext";
 import { ToastContainer } from "react-toastify";
+import FooterSection from "./components/FooterSection";
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -40,6 +41,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <NavBar />
             </Suspense>
             {children}
+
+            <FooterSection />
+
           </>
         </MyPlanContextProvider>
 
