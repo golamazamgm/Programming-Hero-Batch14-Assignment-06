@@ -1,7 +1,11 @@
+import { Suspense } from "react";
 import Hero from "./components/hero";
+import WorkoutsContainer from "./components/workoutsContainer";
+import WorkoutSkeleton from "./components/workoutSkeleton";
 
 const Home = () => {
 
+  
   return (
     <div>
 
@@ -15,6 +19,10 @@ const Home = () => {
             Twelve lifts covering every major muscle group.
           </p>
         </div>
+
+        <Suspense fallback={<WorkoutSkeleton />}>
+          <WorkoutsContainer></WorkoutsContainer>
+        </Suspense>
 
 
 
