@@ -33,14 +33,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className={`min-h-full flex flex-col ${oswald.className}`}>
 
-        <MyPlanContextProvider Children={
-          <>
-          <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
-            <NavBar />
-          </Suspense>
-          {children}
-          </>
-        } />
+        <MyPlanContextProvider>
+  <>
+    <Suspense fallback={<div className="h-16 w-full shadow-sm shadow-olive-800" />}>
+      <NavBar />
+    </Suspense>
+    {children}
+  </>
+</MyPlanContextProvider>
         
         </body>
     </html>

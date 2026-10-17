@@ -1,27 +1,30 @@
 "use client";
-import React, { Children, createContext } from "react";
+import React, { createContext, useState } from "react";
+import { Workout } from "../type";
 
+interface MyPlanContextType {
+    plans: Workout[];
+    setPlans: React.Dispatch<React.SetStateAction<Workout[]>>;
+    laterPlans: Workout[];
+    setLaterPlans: React.Dispatch<React.SetStateAction<Workout[]>>;
+}
 
-const MyPlanContext = createContext({});
+const MyPlanContext = createContext<MyPlanContextType | null>(null);
 
-const MyPlanContextProvider = ({Children} : {Children: React.ReactNode}) => {
+const MyPlanContextProvider = ({ children }: { children: React.ReactNode }) => {
+    const [plans, setPlans] = useState<Workout[]>([]);
+    const [laterPlans, setLaterPlans] = useState<Workout[]>([]);
 
-    const [plans, setPlans] = React.useState([]);
-    const [laterPlans, setLaterPlans] = React.useState([]);
-
-    const myPlan = {
+    const value: MyPlanContextType = {
         plans,
         setPlans,
         laterPlans,
-        setLaterPlans
-
+        setLaterPlans,
     };
 
-
     return (
-        <MyPlanContext.Provider value={{ myPlan }}>
-            {Children}
-
+        <MyPlanContext.Provider value={value}>
+            {children}
         </MyPlanContext.Provider>
     );
 };

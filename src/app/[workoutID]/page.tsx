@@ -120,10 +120,10 @@ export default async function WorkoutDetailsPage({ params }: PageProps) {
             {/* Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-3">
               {/* Add to today's plan */}
-              <SaveTodaysPlanBtn />
+              <SaveTodaysPlanBtn workout={workout} />
 
               {/* Save for later */}
-              <SaveLaterBtn />
+              <SaveLaterBtn workout={workout} />
             </div>
           </div>
         </div>
